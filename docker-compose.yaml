@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  app:
+    build: ./
+    restart: unless-stopped
+    container_name: dk_jenkins
+    image: dk_jenkins
+    ports:
+      - "6789:80"
