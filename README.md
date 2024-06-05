@@ -1,3 +1,4 @@
+## Tips fixes
 fix docker run host post: docker run -v D:\Docker\node_docker:/usr/src/app -p 80:80 -p 3000:80 -d --name node-app node-app-image
 
 initals infor: -p 80:80 => "80" fisrt post is hot port in browser
@@ -9,9 +10,8 @@ if node_modules does not exits: add a command: -v /app/node_modules when you run
 
 Fix: used: Ngnix
 
-
-# Important Command In Docker:
-
+# Docker and Jenkins integration
+### Important Command In Docker:
 1. docker build -t image_name .
 2. docker run image_name
 3. docker restart <name_container> // run again start command
@@ -20,19 +20,19 @@ Fix: used: Ngnix
 6. docker container prune #remove all container images
 7. docker rm (image_name || id) --force #use --force when container is running
 
-# Install jenkins with docker: *https://hub.docker.com/r/jenkins/jenkins*
-# Link github: *https://github.com/jenkinsci/docker/blob/master/README.md*
+### Install jenkins with docker: *https://hub.docker.com/r/jenkins/jenkins*
+### Link github: *https://github.com/jenkinsci/docker/blob/master/README.md*
 1. docker volume create jenkins-home
 2. docker run -d -p 9090:8080 -v jenkins-home:/var/jenkins_home ---restart=on-failure jenkins/jenkins:lts-jdk17
 3. Unlock Jenkins: docker exec "CONTAINER ID" cat /var/jenkins_home/secrets/initialAdminPassword
 
-# Use NGROK to public localhost jenkins
+### Use NGROK to public localhost jenkins
 1. Install ngrok 
 2. open file download and extract all file to some where you could save
 3. open: Change my environment variables in Windows and add link ngrok.exe into PATH
 4. open ngrok and run command: ngrok http 9090
 
-# Build Steps
+### Build Steps
 1. Base build
 *df -kh*
 *ls -lrth /var/jenkins_home*
@@ -40,13 +40,17 @@ Fix: used: Ngnix
 2. Detail more:
   - add webhook: Payload URL: link + /github-webhook/
 
-# Configuration project jenkins
+### Configuration project jenkins
 - add Repository URL your project
 - add Braches to build project
 
-#  Build Triggers
+### Build Triggers
 Select: Github hook trigger for GITScm polling
 
+
+
+
+## Other:
 Bước 1: Cài đặt Docker Compose
 Bạn cần cài đặt Docker Compose trên máy tính của mình. Bạn có thể tải từ trang chủ của Docker hoặc có thể cài đặt thông qua các gói phần mềm của hệ điều hành.
 
