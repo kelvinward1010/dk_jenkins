@@ -10,7 +10,7 @@ if node_modules does not exits: add a command: -v /app/node_modules when you run
 Fix: used: Ngnix
 
 
-Important Command In Docker:
+# Important Command In Docker:
 
 1. docker build -t image_name .
 2. docker run image_name
@@ -19,9 +19,15 @@ Important Command In Docker:
 5. docker container prune #remove all container images
 6. docker rm (image_name || id) --force #use --force when container is running
 
+# Install jenkins with docker: *https://hub.docker.com/r/jenkins/jenkins*
+# Link github: *https://github.com/jenkinsci/docker/blob/master/README.md*
+1. docker volume create jenkins-home
+2. docker run -d -p 9090:8080 -v jenkins-home:/var/jenkins_home ---restart=on-failure jenkins/jenkins:lts-jdk17
+3. Unlock Jenkins: docker exec "CONTAINER ID" cat /var/jenkins_home/secrets/initialAdminPassword
 
-
-
+# Build Steps
+*df -kh*
+*ls -lrth /var/jenkins_home*
 
 Bước 1: Cài đặt Docker Compose
 Bạn cần cài đặt Docker Compose trên máy tính của mình. Bạn có thể tải từ trang chủ của Docker hoặc có thể cài đặt thông qua các gói phần mềm của hệ điều hành.
@@ -62,16 +68,15 @@ networks:
 volumes:
   dbdata:
 
-Ý nghĩa của các giá trị trong file docker-compose:
-
-version: phiên bản của Docker Compose file. Ở đây, chúng ta sử dụng phiên bản 3.
-services: là khu vực khai báo các services cần thiết cho ứng dụng.
-web: dịch vụ web, sử dụng image nginx, chia sẻ volume và network với dịch vụ db. Cổng 80 được định nghĩa để web có thể truy cập được từ bên ngoài.
-db: dịch vụ db, sử dụng image postgresql, chia sẻ volume và network với dịch vụ web. Các biến môi trường cài đặt cho dịch vụ postgresql được định nghĩa ở phần environment.
-networks: danh sách các networks được sử dụng cho container.
-webnet: mạng webnet để chia sẻ giữa dịch vụ web và db.
-volumes: là option nên config, volumes cho phép mount data từ container ra máy local. Khi config option này thì mỗi lần stop container data của container đó sẽ không bị mất đi.
-dbdata: là container chứa thông tin về database.
+# Ý nghĩa của các giá trị trong file docker-compose:
+1. version: phiên bản của Docker Compose file. Ở đây, chúng ta sử dụng phiên bản 3.
+2. services: là khu vực khai báo các services cần thiết cho ứng dụng.
+3. web: dịch vụ web, sử dụng image nginx, chia sẻ volume và network với dịch vụ db. Cổng 80 được định nghĩa để web có thể truy cập được từ bên ngoài.
+4. db: dịch vụ db, sử dụng image postgresql, chia sẻ volume và network với dịch vụ web. Các biến môi trường cài đặt cho dịch vụ postgresql được định nghĩa ở phần environment.
+5. networks: danh sách các networks được sử dụng cho container.
+6. webnet: mạng webnet để chia sẻ giữa dịch vụ web và db.
+7. volumes: là option nên config, volumes cho phép mount data từ container ra máy local. Khi config option này thì mỗi lần stop container data của container đó sẽ không bị mất đi.
+8. dbdata: là container chứa thông tin về database.
 Trong ví dụ này, Docker Compose sẽ khởi tạo 2 container, một container sử dụng image nginx và một container sử dụng image postgresql. Container sử dụng image nginx sẽ được kết nối với container sử dụng image postgresql thông qua mạng webnet. Sau đó, chúng sẽ chia sẻ volume dbdata để lưu trữ dữ liệu của postgresql.
 
 Bước 3: Chạy lệnh docker-compose up

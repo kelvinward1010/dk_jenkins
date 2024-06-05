@@ -16,7 +16,7 @@ RUN npm install
 RUN npm run build
 
 # Expose port 5173 to the outside world
-EXPOSE 5173
+#EXPOSE 5173
 
 # Start the app
 CMD ["npm", "run", "dev"]
