@@ -7,4 +7,4 @@ services:
     container_name: dk_jenkins
     image: dk_jenkins
     ports:
-      - "6789:80"
+      - "9090:8080"

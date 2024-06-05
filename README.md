@@ -14,10 +14,11 @@ Fix: used: Ngnix
 
 1. docker build -t image_name .
 2. docker run image_name
-3. docker ps || docker ps -a
-4. docker stop image_name #stop container image 
-5. docker container prune #remove all container images
-6. docker rm (image_name || id) --force #use --force when container is running
+3. docker restart <name_container> // run again start command
+4. docker ps || docker ps -a
+5. docker stop image_name #stop container image 
+6. docker container prune #remove all container images
+7. docker rm (image_name || id) --force #use --force when container is running
 
 # Install jenkins with docker: *https://hub.docker.com/r/jenkins/jenkins*
 # Link github: *https://github.com/jenkinsci/docker/blob/master/README.md*
@@ -25,9 +26,26 @@ Fix: used: Ngnix
 2. docker run -d -p 9090:8080 -v jenkins-home:/var/jenkins_home ---restart=on-failure jenkins/jenkins:lts-jdk17
 3. Unlock Jenkins: docker exec "CONTAINER ID" cat /var/jenkins_home/secrets/initialAdminPassword
 
+# Use NGROK to public localhost jenkins
+1. Install ngrok 
+2. open file download and extract all file to some where you could save
+3. open: Change my environment variables in Windows and add link ngrok.exe into PATH
+4. open ngrok and run command: ngrok http 9090
+
 # Build Steps
+1. Base build
 *df -kh*
 *ls -lrth /var/jenkins_home*
+
+2. Detail more:
+  - add webhook: Payload URL: link + /github-webhook/
+
+# Configuration project jenkins
+- add Repository URL your project
+- add Braches to build project
+
+#  Build Triggers
+Select: Github hook trigger for GITScm polling
 
 Bước 1: Cài đặt Docker Compose
 Bạn cần cài đặt Docker Compose trên máy tính của mình. Bạn có thể tải từ trang chủ của Docker hoặc có thể cài đặt thông qua các gói phần mềm của hệ điều hành.
