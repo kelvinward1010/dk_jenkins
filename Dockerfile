@@ -20,3 +20,8 @@ RUN npm run build
 
 # Start the app
 CMD ["npm", "run", "dev"]
+
+# FROM nginx:1.17-alpine as production-stage
+# COPY --from=build-stage /app/dist /usr/share/nginx/html
+# COPY /config/default.conf  /etc/nginx/conf.d/default.conf
+# CMD ["nginx", "-g", "daemon off;"]

@@ -19,6 +19,8 @@ Fix: used: Ngnix
 5. docker stop image_name #stop container image 
 6. docker container prune #remove all container images
 7. docker rm (image_name || id) --force #use --force when container is running
+8. docker rename <container-id-or-name> <new-container-name> // change name docker
+9. docker rmi <image-id-or-name> // remove image
 
 ### Install jenkins with docker: *https://hub.docker.com/r/jenkins/jenkins*
 ### Link github: *https://github.com/jenkinsci/docker/blob/master/README.md*
