@@ -24,6 +24,7 @@ Fix: used: Ngnix
 ### Link github: *https://github.com/jenkinsci/docker/blob/master/README.md*
 1. docker volume create jenkins-home
 2. docker run -d -p 9090:8080 -v jenkins-home:/var/jenkins_home ---restart=on-failure jenkins/jenkins:lts-jdk17
+  - In this command, you may use: *docker image tag jenkins/jenkins:lts-jdk17 myname/jenkins:lts-jdk17* to change image container in above command
 3. Unlock Jenkins: docker exec "CONTAINER ID" cat /var/jenkins_home/secrets/initialAdminPassword
 
 ### Use NGROK to public localhost jenkins
