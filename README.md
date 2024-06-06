@@ -13,10 +13,10 @@ Fix: used: Ngnix
 # Docker and Jenkins integration
 ### Important Command In Docker:
 1. docker build -t image_name .
-2. docker run image_name
+2. docker run name_container
 3. docker restart <name_container> // run again start command
 4. docker ps || docker ps -a
-5. docker stop image_name #stop container image 
+5. docker stop name_container #stop container image 
 6. docker container prune #remove all container images
 7. docker rm (image_name || id) --force #use --force when container is running
 8. docker rename <container-id-or-name> <new-container-name> // change name docker
