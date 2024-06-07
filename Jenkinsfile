@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'buil-in'}
+    agent any //{ label 'buil-in'}
 
     tools {
         nodejs 'node_v20'
@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                checkout scm
+                git branch: 'main', changelog: false, credentialsId: 'github-123', poll: false, url: 'https://github.com/kelvinward1010/dk_jenkins.git' //checkout scm
             }
         }
         stage('build') {

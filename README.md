@@ -10,7 +10,7 @@ if node_modules does not exits: add a command: -v /app/node_modules when you run
 
 Fix: used: Ngnix
 
-# Docker and Jenkins integration
+# Docker
 ### Important Command In Docker:
 1. docker build -t image_name .
 2. docker run name_container
@@ -22,8 +22,10 @@ Fix: used: Ngnix
 8. docker rename <container-id-or-name> <new-container-name> // change name docker
 9. docker rmi <image-id-or-name> // remove image
 
+# Jenkins
 ### Install jenkins with docker: *https://hub.docker.com/r/jenkins/jenkins*
 ### Link github: *https://github.com/jenkinsci/docker/blob/master/README.md*
+  - you could download on Docker Destop
 1. docker volume create jenkins-home
 2. docker run -d -p 9090:8080 -v jenkins-home:/var/jenkins_home ---restart=on-failure jenkins/jenkins:lts-jdk17
   - In this command, you may use: *docker image tag jenkins/jenkins:lts-jdk17 myname/jenkins:lts-jdk17* to change image container in above command
@@ -50,6 +52,15 @@ Fix: used: Ngnix
 ### Build Triggers
 Select: Github hook trigger for GITScm polling
 
+
+# Github / Gitlab 
+ - use webhook in settings and add URL to follow
+
+# Sonaqube
+ - You could then build and try the image with something like:
+  $ docker build --tag=sonarqube-custom .
+  $ docker run -ti sonarqube-custom
+  $ docker run -d --name sonar -p 9000:9000 sonarqube
 
 
 
