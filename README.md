@@ -56,6 +56,18 @@ Select: Github hook trigger for GITScm polling
 # Github / Gitlab 
  - use webhook in settings and add URL to follow
 
+# Nginx
+  - Sử dụng image Nginx làm base
+  1. FROM nginx
+  - Copy file index.html vào thư mục /usr/share/nginx/html
+  2. COPY index.html /usr/share/nginx/html
+  - Mở terminal và chạy lệnh sau để xây dựng Docker image:
+  3. docker build -t my-nginx-image . // Trong lệnh trên, thay “my-nginx-image” bằng tên bạn muốn đặt cho image.
+  - Chạy lệnh sau để khởi chạy container Nginx:
+  4. docker run -d -p 80:80 --name my-nginx-container my-nginx-image
+
+
+
 # Sonaqube
  - You could then build and try the image with something like:
   $ docker build --tag=sonarqube-custom .

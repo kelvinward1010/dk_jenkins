@@ -21,7 +21,10 @@ RUN npm run build
 # Start the app
 CMD ["npm", "run", "dev"]
 
-# FROM nginx:1.17-alpine as production-stage
-# COPY --from=build-stage /app/dist /usr/share/nginx/html
-# COPY /config/default.conf  /etc/nginx/conf.d/default.conf
-# CMD ["nginx", "-g", "daemon off;"]
+# Sử dụng image Nginx làm base
+FROM nginx
+
+# Copy file index.html vào thư mục /usr/share/nginx/html
+COPY index.html /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
